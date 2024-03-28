@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('home', compact('qrCode'));
 });
 
+// Rota para Home page
+Route::get('/home', [QrCodeController::class, 'home'])->name('home');
+
 // Rota para Envio de formulário com informações para a geração de QrCode
 Route::get('/gerarQrCode', [QrCodeController::class, 'geradorQrCode'])->name('geradorQrCode');
 Route::post('/gerarQrCode', [QrCodeController::class, 'gerarQrCode'])->name('gerarQrCode');

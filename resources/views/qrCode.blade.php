@@ -7,12 +7,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>QrCode</title>
     <style>
+        * {
+            padding:0;
+            margin:0;
+            vertical-align:baseline;
+            list-style:none;
+            border:0;
+        }
+        
+        body{
+            background-color: #fcf6e0;
+        }
         header h1{
             text-align: center;
         }
 
-        header a{
-            margin-left: 20%;
+        nav{
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        nav a{
+            margin: auto;
         }
 
         main{
@@ -36,10 +52,12 @@
 		@endif
     <header>
         <h1>QrCode</h1>
-        <a href=""><button class="btn btn-info">Gerar novo QrCode</button></a>
     </header>
+    <nav>
+        <a href="{{ route('gerarQrCode') }}"><button class="btn btn-info">Gerar novo QrCode</button></a>
+    </nav>
     <main>
-        <div class="content"><?php echo $qrCode ?></div>
+        <div class="content"><?php echo $qrCodeGerado ?></div>
     </main>
 </body>
 </html>

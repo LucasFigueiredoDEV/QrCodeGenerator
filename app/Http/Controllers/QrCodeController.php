@@ -8,15 +8,21 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class QrCodeController extends Controller
 {
 
+    public function home(){
+        $qrCode = QrCode::size(300)->generate('https://www.instagram.com/_lulucass/');
+        return view('home', compact('qrCode'));
+    }
+
     public function geradorQrCode(){
         return view('gerarQrCode');
     }
 
     public function gerarQrCode(Request $request){
         $input = $request->all();
-        $qrCode = QrCode::size(200)->generate($input['link']);
+        $qrCode = QrCode::size(300)->generate('https://www.instagram.com/_lulucass/');
+        $qrCodeGerado = QrCode::size(300)->generate($input['link']);
         $validator = 'QrCode Gerado com Sucesso!';
-        return view('qrCode', compact('qrCode'))
+        return view('qrCode', compact('qrCode', 'qrCodeGerado'))
                         ->withErrors($validator)
 						->withInput(session()->flashInput($request->input()));
     }
