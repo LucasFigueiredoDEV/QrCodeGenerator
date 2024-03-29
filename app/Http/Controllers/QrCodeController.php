@@ -30,4 +30,21 @@ class QrCodeController extends Controller
     public function qrCode(){
         return view('QrCode');
     }
+
+    public function download(Request $request)
+    {
+        $input = $request->all();
+        dd($input);
+        return response()->streamDownload(
+            function () {
+                echo QrCode::size(300)
+                    ->format('png')
+                    ->generate($input['qrCode']);
+            },
+            'qr-code.png',
+            [
+                'Content-Type' => 'image/png',
+            ]
+        );
+    }
 }

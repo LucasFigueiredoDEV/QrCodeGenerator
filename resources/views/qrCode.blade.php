@@ -27,8 +27,12 @@
             margin-bottom: 20px;
         }
 
-        nav a{
+        nav .options-menu{
             margin: auto;
+        }
+
+        nav .options-menu a{
+            margin: 10px;
         }
 
         main{
@@ -51,13 +55,19 @@
 		 </div>
 		@endif
     <header>
-        <h1>QrCode</h1>
+        <h1>Seu QrCode</h1>
     </header>
     <nav>
-        <a href="{{ route('gerarQrCode') }}"><button class="btn btn-info">Gerar novo QrCode</button></a>
+        <div class="options-menu">
+            <a href="{{ route('home') }}"><button class="btn btn-warning">Página Principal</button></a>
+            <a href="{{ route('gerarQrCode') }}"><button class="btn btn-info">Gerar novo QrCode</button></a>
+        </div>
     </nav>
     <main>
         <div class="content"><?php echo $qrCodeGerado ?></div>
     </main>
+    <section style="display: flex; margin-top: 20px;">
+        <div style="margin: auto;"><a href=""><button class="btn btn-success">Download</button></a></div>
+    </section>
 </body>
 </html>
